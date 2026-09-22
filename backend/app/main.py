@@ -1,0 +1,26 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.config import settings
+from app.routers import auth, vendors, invoices, dashboard, ai
+
+app = FastAPI(title="Smart Invoice Manager API", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origin_list,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth.router)
+app.include_router(vendors.router)
+app.include_router(invoices.router)
+app.include_router(dashboard.router)
+app.include_router(ai.router)
+
+
+@app.get("/api/health")
+def health_check():
+    return {"status": "ok"}

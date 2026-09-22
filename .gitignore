@@ -1,0 +1,19 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.env
+backend/firebase-service-account.json
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
