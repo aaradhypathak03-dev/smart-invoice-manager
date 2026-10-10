@@ -1,6 +1,6 @@
 import type { InvoiceDetail, InvoiceItemInput, InvoiceSummary, PaymentStatus, Vendor } from '../types'
 
-const BASE_URL = 'http://localhost:8000/api'
+const BASE_URL = 'http://127.0.0.1:8000/api'
 const TOKEN_KEY = 'invoice_manager_token'
 
 export function getToken(): string | null {

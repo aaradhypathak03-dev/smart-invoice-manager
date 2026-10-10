@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Receipt } from 'lucide-react'
 import Button from '../components/Button'
 import Card from '../components/Card'
+import Logo from '../components/Logo'
 import { useAuthStore } from '../store/AuthStore'
 import { ApiError, register as registerApi } from '../api/client'
 
@@ -53,7 +53,7 @@ export default function Register() {
     try {
       const res = await registerApi({ name: name.trim(), phone: toE164(phone)!, password })
       setSession(res.access_token, res.user)
-      navigate('/')
+      navigate('/dashboard')
     } catch (e) {
       setError(e instanceof ApiError ? e.message : 'Registration failed')
     } finally {
@@ -64,10 +64,10 @@ export default function Register() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-bg-secondary px-4">
       <div className="w-full max-w-sm">
-        <div className="mb-8 flex flex-col items-center gap-2">
-          <Receipt className="h-8 w-8 text-brand" />
+        <Link to="/" className="mb-8 flex flex-col items-center gap-2">
+          <Logo className="h-10 w-10" />
           <h1 className="text-xl font-bold text-text-primary">Smart Invoice Manager</h1>
-        </div>
+        </Link>
 
         <Card>
           <h2 className="mb-5 text-lg font-semibold text-text-primary">Create an account</h2>
